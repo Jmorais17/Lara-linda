@@ -1,1 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mensagem para Lara</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #fff0f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      font-family: 'Arial', sans-serif;
+    }
 
+    h1 {
+      z-index: 2;
+      font-size: 2.5rem;
+      color: #ff1493;
+      text-align: center;
+    }
+
+    .green-heart {
+      font-size: 5rem;
+      color: green;
+      margin-top: 20px;
+    }
+
+    .falling-heart {
+      position: absolute;
+      top: -50px;
+      font-size: 1.5rem;
+      color: pink;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center;">
+    <h1>VOCÊ É LINDA LARA, LINDA, LINDA, LINDA, LINDA</h1>
+    <div class="green-heart">💚</div>
+  </div>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'falling-heart';
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 2 + Math.random() * 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 200);
+  </script>
+</body>
+</html>
